@@ -157,8 +157,6 @@ class Dcm2niixGen(object):
                 for filepath in Path(dicomDir).rglob("*"):
                     if filepath.is_file():
                         shutil.copy(filepath, Path(self.output_dir / f"{Path(dicomDir).name}_{filepath.name}"), follow_symlinks=True)
-                # shutil.copytree(dicomDir, self.output_dir, dirs_exist_ok=True)
-                # cmd = ['cp', '-r', dicomDir, self.output_dir]
-                # self.logger.info("Running: %s", " ".join(str(item) for item in cmd))
+                self.logger.info("Copying NIFTI files/sidecars from: %s", dicomDir)
 
             self.logger.info("Not running dcm2niix\n")
